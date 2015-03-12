@@ -1,0 +1,68 @@
+= form_for @relationship, :html => { :class => "form-horizontal" } do |f|
+  - if @relationship.errors.any?
+    .alert.alert-danger.alert-dismissable
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+      %h2
+        = pluralize(@relationship.errors.count, "error")
+        prohibited
+        this relationship from being saved:
+      %ul
+        - @relationship.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    = f.label :name, t('relationships.attributes.name'), :class => "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :name, :class => "form-control"
+  .form-group
+    = f.label :entity_instance_to, t('relationships.attributes.entity_instance_to'), :class => "col-sm-2 control-label"
+    .col-sm-10
+      = text_field_tag 'entity_to', nil, placeholder: t('relationships.entity_placeholder'), :class => "form-control typeahead", data: 'relationship_entity_instance_to'
+      = f.text_field(:entity_instance_to, :class => "form-control hidden")
+  .form-group
+    = f.label :entity_instance_from, t('relationships.attributes.entity_instance_from'), :class => "col-sm-2 control-label"
+    .col-sm-10
+      = text_field_tag 'entity_from', nil, placeholder: t('relationships.entity_placeholder'), :class => "form-control typeahead", data: 'relationship_entity_instance_from'
+      = f.text_field(:entity_instance_from, :class => "form-control hidden")
+  .form-group
+    = f.label :relationship_type, t('relationships.attributes.type'), :class => "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :relationship_type, class: "form-control", value: @type
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit :class => "btn btn-primary"
+:javascript
+  var engine_entity = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace,
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    remote: {"url":'/entity_instances/autocomplete?query=%QUERY'}
+  });
+  var engine_type = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace,
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    remote: {"url":'/relationships/autocomplete_type?query=%QUERY'}
+  });
+
+  engine_entity.initialize();
+  engine_type.initialize();
+
+  $(".typeahead").typeahead({
+    "highlight": true
+  },
+  {
+    minLength: 1,
+    name: 'dataset',
+    displayKey: 'name',
+    "source": engine_entity.ttAdapter()
+  }).on('typeahead:selected', function (obj, datum) {
+    $("#" + $(this).attr('data')).val(datum.id);
+    console.log($(this).attr('data'))
+  });
+  $("#relationship_relationship_type").typeahead({
+    "highlight": true
+  },
+  {
+    minLength: 1,
+    name: 'dataset',
+    displayKey: 'name',
+    "source": engine_type.ttAdapter()
+  })

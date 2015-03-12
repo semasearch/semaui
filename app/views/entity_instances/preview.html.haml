@@ -1,0 +1,43 @@
+.page-header
+  %h1= t('entity_instances.model_name')
+%dl.dl-horizontal
+  %dt= t('entity_instances.attributes.name')
+  %dd= @entity_instance.name
+  %dt= t('entity_instances.attributes.description')
+  %dd= @entity_instance.description
+  %dt= t('entity_instances.attributes.graph_id')
+  %dd= @entity_instance.node_id
+  %dt= t('entity_instances.attributes.type')
+  %dd= @entity_type.name
+  %dt= t('entity_instances.attributes.creator')
+  %dd= @entity_instance.user.initials
+.page-header
+  %h1= t('relationships.models_name')
+.col-md-6
+  %h3= t('relationships.attributes.entity_instance_from')
+  .table-responsive
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th= t('relationships.attributes.name')
+          %th= t('relationships.attributes.entity_instance_to')
+          %th= t('relationships.attributes.type')
+      %tbody
+        = content_tag_for(:tr, @entity_instance.relationships_from) do |relationship|
+          %td= link_to relationship.name, relationship
+          %td= link_to relationship.entity_to.name, relationship.entity_to
+          %td= relationship.relationship_type.name
+.col-md-6
+  %h3= t('relationships.attributes.entity_instance_to')
+  .table-responsive
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th= t('relationships.attributes.name')
+          %th= t('relationships.attributes.entity_instance_from')
+          %th= t('relationships.attributes.type')
+      %tbody
+        = content_tag_for(:tr, @entity_instance.relationships_to) do |relationship|
+          %td= link_to relationship.name, relationship
+          %td= link_to relationship.entity_from.name, relationship.entity_from
+          %td= relationship.relationship_type.name

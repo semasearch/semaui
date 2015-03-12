@@ -1,0 +1,16 @@
+%h3= t('search.history_title')
+.row
+  .table-responsive
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th= t('search.search_for')
+          %th= t('search.search_by')
+          %th= t('search.searching_at')
+          %th= t('search.results')
+          %th
+      %tbody
+        = content_tag_for(:tr, @searches) do |search|
+          %td= search.search_for
+          %td= search.user ? search.user.try(:initials) : 'unsigned'
+          %td= search.created_at.strftime('%d-%m-%y')

@@ -1,0 +1,28 @@
+= form_for @suggest_relationship, :html => { :class => "form-horizontal" } do |f|
+  - if @suggest_relationship.errors.any?
+    .alert.alert-danger.alert-dismissable
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+      %h2
+        = pluralize(@suggest_relationship.errors.count, "error")
+        prohibited this suggest_relationship from being saved:
+      %ul
+        - @suggest_relationship.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :entity_instance_to, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :entity_instance_to, :class => "form-control", required: true
+  .form-group
+    = f.label :entity_instance_from, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :entity_instance_from, :class => "form-control", required: true
+  .form-group
+    = f.label :relationship_type, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :relationship_type, :class => "form-control", required: true
+  .form-group
+    = f.label :url, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = f.text_field :url, :class => "form-control", required: true
+  .form-group
+    = f.submit :class => "btn btn-primary"

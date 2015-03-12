@@ -1,0 +1,19 @@
+%h1= t('relationships.models_name')
+%table.table
+  %tr
+    %th= t('relationships.attributes.name')
+    %th= t('relationships.attributes.entity_instance_to')
+    %th= t('relationships.attributes.entity_instance_from')
+    %th
+    %th
+  - @relationships.each do |relationship|
+    %tr
+      %td=link_to relationship.name, relationship_path(relationship)
+      %td= link_to relationship.entity_to.name, relationship.entity_to
+      %td= link_to relationship.entity_from.name, relationship.entity_from
+      -if can? :manage, Relationship
+        %td= link_to t('helpers.edit'), edit_relationship_path(relationship)
+        %td= link_to t('helpers.destroy'), relationship_path(relationship), |
+          method: :delete, data: { confirm: 'Are you sure?' } |
+= paginate @relationships
+= link_to t('relationships.new'), new_relationship_path if can? :manage, Relationship

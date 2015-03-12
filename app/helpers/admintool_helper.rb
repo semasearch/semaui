@@ -1,0 +1,2 @@
+module AdmintoolHelper
+end

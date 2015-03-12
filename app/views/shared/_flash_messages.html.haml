@@ -1,0 +1,4 @@
+#notice.alert.alert-success{:role => "alert"}
+  %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+  - flash.each do |key, value|
+    = content_tag(:div, value, :class => "flash #{key}")

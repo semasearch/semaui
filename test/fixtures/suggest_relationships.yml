@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entity_instance_to: MyString
+  entity_instance_from: MyString
+  relationship_type_id: 1
+  url: MyString
+
+two:
+  entity_instance_to: MyString
+  entity_instance_from: MyString
+  relationship_type_id: 1
+  url: MyString

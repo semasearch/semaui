@@ -1,0 +1,12 @@
+-unless params[:search]
+  =render 'search_form'
+  .well
+    %p{"data-content" => "And here's some amazing content. It's very engaging. Right?", "data-toggle" => "popover", :title => "Popover title", :type => "button"}
+      %strong If you havn't find what you are looking for
+    =render 'suggest_relationships/form'
+-else
+  %p{"data-content" => "And here's some amazing content. It's very engaging. Right?", "data-toggle" => "popover", :title => "Popover title", :type => "button"}= t('searches.results')
+  -if params[:data_type] == '0'
+    =render 'graph'
+  -else
+    =render 'table'

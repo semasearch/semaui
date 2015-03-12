@@ -1,0 +1,7 @@
+-if entity.relationships_to.any?
+  .col-md-2
+    %p= t('relationships.attributes.entity_instance_to')
+    -entity.relationships_to.each do |relationship|
+      %p
+        %strong= relationship.entity_from.name
+      = render partial: 'entity_relationships_to', locals: {entity: relationship.entity_from}

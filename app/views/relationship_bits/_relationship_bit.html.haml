@@ -1,0 +1,13 @@
+%p
+  %strong URL:
+  = relationship_bit.url
+%p
+  %strong Comment:
+  = relationship_bit.comment
+%p
+  %strong Full text:
+  = relationship_bit.fulltext
+%p
+  = link_to 'Destroy Relationship Bit', [relationship_bit.relationship, relationship_bit], |
+    method: :delete,                                                                       |
+    data: { confirm: 'Are you sure?' }                                                     |

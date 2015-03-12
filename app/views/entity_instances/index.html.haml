@@ -1,0 +1,16 @@
+%h1= t('entity_instances.models_name')
+%table.table
+  %tr
+    %th= t('entity_instances.attributes.name')
+    %th= t('entity_instances.attributes.description')
+    %th{:colspan => "3"}
+  - @entity_instances.each do |entity_instance|
+    %tr
+      %td=link_to entity_instance.name, entity_instance_path(entity_instance)
+      %td= entity_instance.description
+      -if can? :manage, EntityInstance
+        %td= link_to t('helpers.edit'), edit_entity_instance_path(entity_instance)
+        %td= link_to t('helpers.destroy'), entity_instance_path(entity_instance), |
+            method: :delete, data: { confirm: 'Are you sure?' }       |
+= paginate @entity_instances
+= link_to t('entity_instances.new') + ' '  + t('entity_instances.model_name'), new_entity_instance_path if can? :manage, EntityInstance

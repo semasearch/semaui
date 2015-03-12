@@ -1,0 +1,182 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    = csrf_meta_tags
+    %title Semasearch
+    / Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/
+    %link{:href => "css/bootstrap.min.css", :rel => "stylesheet"}/
+    / Custom CSS
+    %link{:href => "css/freelancer.css", :rel => "stylesheet"}/
+    / Custom Fonts
+    %link{:href => "font-awesome-4.1.0/css/font-awesome.min.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Montserrat:400,700", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic", :rel => "stylesheet", :type => "text/css"}/
+    / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    / WARNING: Respond.js doesn't work if you view the page via file://
+    /[if lt IE 9]
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  %body#page-top.index
+    / Navigation
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header.page-scroll
+          %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "#page-top"} Semasearch
+        / Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li.hidden
+              %a{:href => "#page-top"}
+            %li.page-scroll
+              %a{:href => "#portfolio"} Збір даних
+            %li.page-scroll
+              %a{:href => "#about"} Про проект
+            %li.page-scroll
+              %a{:href => "#contact"} Контакти
+        / /.navbar-collapse
+      / /.container-fluid
+    / Header
+    %header
+      .container
+        .row
+          .col-lg-12
+            %img.img-responsive{:alt => "", :src => "img/graph.jpg"}/
+            .intro-text
+              %span.name Semasearch
+              %hr.star-light/
+              %span.skills Автоматизована система пошуку зв’язків між людьми та організаціями.
+    / Portfolio Grid Section
+    %section#portfolio
+      .container
+        .row
+          .col-lg-12.text-center
+            %h2 Збір даних
+            %hr.star-primary/
+        .row.col-lg-12
+          %p
+            1) Обираєте список над яким плануєте працювати з
+            %a{:href => "https://docs.google.com/spreadsheets/d/1YeZXEmdzys3PErTXTnBCbo-9qZZOAwKEwpDXmGityHk/edit?usp=sharing"} доступних
+          %p 2) Повідомляєте на semasearch.hq@gmail.com про вибраний список і початок роботи
+          %p
+            3) Шукаєте зв'язки людей з іншими людьми та організаціями на сайтах яким можна довіряти згідно
+            %a{:href => "https://docs.google.com/spreadsheets/d/1rK2ie7xwxfIt4gIBnqvmzKZa1gt06az7NnHFeFeCkjs/edit?usp=sharing"} "білого списку"
+          %p
+            4) Формуєте трійки сутностей по шаблону
+            %b сутність 1|зв'язок|сутність 2|посилання
+            %br/
+            %br/
+            Наприклад з цієї статті
+            %a{:href => "http://blogs.pravda.com.ua/authors/chornovol/5366d046e9b00/"} http://blogs.pravda.com.ua/authors/chornovol/5366d046e9b00/
+            маємо:
+            %br/
+            %br/
+            ТОВ "Каласар"|керує|Олександр Козирєв|http://blogs.pravda.com.ua/authors/chornovol/5366d046e9b00/
+            %br/
+            Олександр Козирєв|пов'язаний|Юрій Іванющенко|http://blogs.pravda.com.ua/authors/chornovol/5366d046e9b00/
+            %br/
+            "Хліб інвестбуд"|власник|ТОВ "Каласар"|http://blogs.pravda.com.ua/authors/chornovol/5366d046e9b00/
+            %br/
+            ТОВ "Каласар"|власник|Genetechma Finance Limited|http://blogs.pravda.com.ua/authors/chornovol/5366d046e9b00/
+            %br/
+          %p 4) Надсилаєте зібрану інформацію файлом на semasearch.hq@gmail.com 
+          %p
+          %p
+          %p
+          %p Або заповніть форму нижче:
+        .row.col-lg-12{style: 'margin-top: 40px'}
+          = form_for SuggestRelationship.new, :html => { :class => "form-horizontal" } do |f|
+            .form-group
+              = f.label :entity_instance_to, 'Сутність 1', :class => "col-sm-2 control-label"
+              .col-sm-10
+                = f.text_field :entity_instance_to, :class => "form-control", required: true
+            .form-group
+              = f.label :relationship_type, "Зв'язок", :class => "col-sm-2 control-label"
+              .col-sm-10
+                = f.text_field :relationship_type, :class => "form-control", required: true
+            .form-group
+              = f.label :entity_instance_from, 'Сутність 2', :class => "col-sm-2 control-label"
+              .col-sm-10
+                = f.text_field :entity_instance_from, :class => "form-control", required: true
+            .form-group
+              = f.label :url, 'Посилання', :class => "col-sm-2 control-label"
+              .col-sm-10
+                = f.text_field :url, :class => "form-control", required: true
+            .form-group
+              = f.submit 'Відправити', :class => "btn btn-primary pull-right"
+        }
+
+
+    / About Section
+    %section#about.success
+      .container
+        .row
+          .col-lg-14.text-center
+            %h2 Про проект
+            %hr.star-light/
+        .row
+          .col-sm-4
+            %p Semasearch – інноваційний проект пошуку неявних корупційних та аномальних зв’язків між державними чиновниками, фізичними особами, компаніями та організаціями. Проект спрощує роботу по пошуку даних та сприяє оперативному отриманню необхідної інформації.
+          .col-sm-4
+            %p Базу проекту наповнюють волонтери, які додають зв’язки між людьми та організаціями на основі відкритих та публічних джерел. Колективна робота дозволяє отримати якісне відображення зв'язків які будуть дуже близькі до реального світу.
+          .col-sm-4
+            %p 
+              Доступ до бази буде вільним. Працювати з результатми пошуку можна буде як візуально, маніпулюючи графом, так і у більш звичній табличній текстовій формі. 
+        .row.text-center
+          %p 
+            Проект є переможцем національного хакатону на тему комунікації та безпеки в умовах конфлікту 
+          = link_to image_tag( 'http://security.socialboost.com.ua/theme/img/rnbo.png'), 'http://www.rnbo.gov.ua/'
+          = link_to image_tag( 'http://security.socialboost.com.ua/theme/img/logo.png'), 'http://security.socialboost.com.ua/'
+          = link_to image_tag( 'http://security.socialboost.com.ua/theme/img/undp.png'), 'http://www.ua.undp.org/content/ukraine/en/home.html'
+    / Contact Section
+    %section#contact
+      .container
+        .row
+          .col-lg-12.text-center
+            %h2 Контакти
+            %hr.star-primary/
+        .row
+          .col-lg-8.col-lg-offset-2
+            Проект знаходиться в стадії розробки. По всіх питаннях будь ласка звертайтесь semasearch.hq@gmail.com
+    / Footer
+    %footer.text-center
+      .footer-below
+        .container
+          .row
+            .col-lg-12
+              Copyright © Semasearch 2014
+    / Scroll to Top Button (Only visible on small and extra-small screen sizes)
+    .scroll-top.page-scroll.visible-xs.visble-sm
+      %a.btn.btn-primary{:href => "#page-top"}
+        %i.fa.fa-chevron-up
+    / jQuery Version 1.11.0
+    %script{:src => "js/jquery-1.11.0.js"}
+    / Bootstrap Core JavaScript
+    %script{:src => "js/bootstrap.min.js"}
+    / Plugin JavaScript
+    %script{:src => "http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"}
+    %script{:src => "js/classie.js"}
+    %script{:src => "js/cbpAnimatedHeader.js"}
+    / Contact Form JavaScript
+    %script{:src => "js/jqBootstrapValidation.js"}
+    /%script{:src => "js/contact_me.js"}
+    / Custom Theme JavaScript
+    %script{:src => "js/freelancer.js"}
+    :javascript
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-51573025-3', 'auto');
+      ga('send', 'pageview');

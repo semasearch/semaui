@@ -1,0 +1,21 @@
+-if params[:search].blank?
+  -@entities.each do |entity|
+    .well
+      .row
+        .col-md-2
+          %strong= entity.name
+        = render partial: 'entity_relationships_to', locals: {entity: entity}
+        = render partial: 'entity_relationships_from', locals: {entity: entity}
+-else
+  .well
+    .row
+      .col-md-2
+        %strong= @entity1.name
+      = render partial: 'entity_relationships_to', locals: {entity: @entity1}
+      = render partial: 'entity_relationships_from', locals: {entity: @entity1}
+  .well
+    .row
+      .col-md-2
+        %strong= @entity2.name
+      = render partial: 'entity_relationships_to', locals: {entity: @entity2}
+      = render partial: 'entity_relationships_from', locals: {entity: @entity2}

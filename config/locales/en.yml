@@ -1,0 +1,61 @@
+en:
+  hello: "Hello world"
+  page_titles:
+    home: Home
+    home_title: "Semar"
+    users_index: 'All Users'
+    users_show: ' - Profile'
+    entities: Entities
+    suggest: Suggests for realationships
+    profile: Profile
+    sign_in: Sign in
+    relationships: Relationships
+    logout: Logout
+  admin_pages:
+    titles:
+      admin_tools: Admin tools
+      users: Users
+      search_history: Search history
+    admin_tools:
+      clear: Clear
+      upload: Upload
+      download_rows: Download data rows
+  search:
+    history_title: 'Search history'
+    search_for: 'Search for'
+    searching_at: 'Searhing at'
+    searching_by: 'Searhing by'
+    results: 'Results'
+  searches:
+    search: Search
+    results: 'Results are:'
+  entity_instances:
+    new: New
+    model_name: Entity
+    models_name: Entities
+    form:
+      name: "Name"
+      description: Description
+      type: Type
+      graph_id: Graph ID
+      creator: Creator
+  helpers:
+    back: Back
+    edit: Edit
+    destroy: Destroy
+    submit:
+      create: Create
+      update: Update
+  relationships: 
+    model_name: Relationship
+    models_name: Relationships
+    attributes:
+      name: Name
+      entity_instance_to: To entity
+      entity_instance_from: From entity
+      type: Type
+    new: New Relationship
+    entity_placeholder: Enter your search entity here
+  relationship_bits: 
+    model_name: Relationship bit
+    models_name: Relationship bits

@@ -1,0 +1,13 @@
+.jumbotron
+  %h1= t('searches.search')
+  %p
+    = form_tag "/searches/search", :method => 'get' do
+      %p
+        = text_field_tag :search, params[:search], class: "span2 input-large search-query", id: 'search-btn'
+        = select_tag :data_type, options_for_select([ ["Graph", 0], ["Table", 1] ], "Graph"), id: 'search_select'
+        = submit_tag t('searches.search'),  :name => nil, class: "btn btn-lg btn-primary"
+- if defined?(@entity_instances)
+  - @entity_instances.each do |entity_instance|
+    %tr
+      %td= entity_instance.name
+      %td= entity_instance.description

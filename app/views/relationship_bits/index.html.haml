@@ -1,0 +1,22 @@
+-if can? :manage, Relationship
+  %h2 Add a relationship bit:
+  = render "form" 
+.page-header
+  %h1 Listing relationship bits for @relationship.name
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Url
+        %th Comment
+        %th Full text
+        %th
+        %th
+    %tbody
+      = content_tag_for(:tr, @relationship_bits) do |relationship_bit|
+        %td= relationship_bit.url
+        %td= relationship_bit.comment
+        %td= relationship_bit.fulltext
+        %td= link_to 'Edit', edit_relationship_relationship_bit_path(@relationship, relationship_bit)
+        %td= link_to 'Destroy', relationship_relationship_bit_path(@relationship, relationship_bit), method: :delete, data: { confirm: 'Are you sure?' }
+= paginate @relationship_bits, theme: 'twitter-bootstrap-3', pagination_class: "pagination-small pagination-centered"

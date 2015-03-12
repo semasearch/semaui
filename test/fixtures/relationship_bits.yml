@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyText
+  comment: MyText
+  fulltext: MyText
+  relationship_id: 
+
+two:
+  url: MyText
+  comment: MyText
+  fulltext: MyText
+  relationship_id: 

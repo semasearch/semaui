@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title= "#{content_for?(:title) ? content_for(:title) + " - " + t('page_titles.home_title') : t('page_titles.home_title')}"
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    = render "layouts/header" if current_user
+    .container.theme-showcase{:role => "main"}
+      = render 'shared/flash_messages' unless flash.empty?
+      = yield
+    = render "layouts/footer"

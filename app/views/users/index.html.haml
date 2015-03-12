@@ -1,0 +1,29 @@
+- content_for :title, t('page_titles.users_index')
+.page-header
+  %h1= t('page_titles.users_index')
+.row
+  .col-md-6
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th Email
+            %th
+        %tbody
+          = content_tag_for(:tr, @users) do |user|
+            %td= link_to user.email, user
+            %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' unless user.has_role?(:admin)
+.row
+  .col-md-6
+    %h2 Users who who don't accept the invitation
+    .table-responsive
+      %table.table.table-striped.table-bordered.table-hover
+        %thead
+          %tr
+            %th Email
+            %th
+        %tbody
+          = content_tag_for(:tr, @invited_users) do |user|
+            %td= user.email
+            %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+= link_to 'Invite user', new_user_invitation_path

@@ -1,0 +1,61 @@
+uk:
+  hello: "Hello world"
+  page_titles:
+    home: Головна
+    home_title: "Семар"
+    users_index: 'Всі користувачі'
+    users_show: ' - Профіль'
+    entities: Сутності
+    suggest: Пропозиції відносин
+    profile: Профіль
+    sign_in: Увійти
+    relationships: Відносини
+    logout: Вихід
+  admin_pages:
+    titles:
+      admin_tools: Інстументи адміністратора
+      users: Користувачі
+      search_history: Історія пошуків
+    admin_tools:
+      clear: Очистити
+      upload: Відвантажити
+      download_rows: Завантажити дані
+  search:
+    history_title: 'Історія пошуку'
+    search_for: 'Пошуковий запит'
+    searching_at: 'Пошук о'
+    searching_by: 'Автор'
+    results: 'Результати'
+  searches:
+    search: Пошук
+    results: 'Результати:'
+  entity_instances:
+    new: Нова
+    model_name: Сутність
+    models_name: Сутності
+    attributes:
+      name: "Ім'я"
+      description: Опис
+      type: Тип
+      graph_id: ID графу
+      creator: автор
+  helpers:
+    back: Назад
+    edit: Редагувати
+    destroy: Видалити
+    submit:
+      create: Створити
+      update: Оновити
+  relationships: 
+    model_name: Відносини
+    models_name: Відносини
+    attributes:
+      name: "Ім'я"
+      entity_instance_to: До сутності
+      entity_instance_from: Від сутності
+      type: Тип
+    new: Створити відносини
+    entity_placeholder: "Почніть набирати ім'я або назву"
+  relationship_bits: 
+    model_name: Relationship bit
+    models_name: Relationship bits

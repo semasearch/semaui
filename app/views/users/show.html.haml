@@ -1,0 +1,16 @@
+- content_for :title,  @user.initials.mb_chars.capitalize + t('page_titles.users_show')
+%h1= @user.initials.mb_chars.capitalize + t('page_titles.users_show')
+%h3= t('search.history_title')
+.row
+  .table-responsive
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th= t('search.search_for')
+          %th= t('search.searching_at')
+          %th= t('search.results')
+          %th
+      %tbody
+        = content_tag_for(:tr, @searches) do |search|
+          %td= search.search_for
+          %td= search.created_at.strftime('%d-%m-%y')

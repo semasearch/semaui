@@ -1,0 +1,23 @@
+.navbar.navbar-default
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to "Semasearch", root_path, class: 'navbar-brand'
+    .navbar-collapse.collapse
+      %ul.nav.navbar-nav
+        %li{class:  current_page?(root_path) ? 'active' : ''}= link_to t('page_titles.home'), root_path
+        %li{class:  params[:controller]=~/\Aentity_instances/ ? 'active' : ''}= link_to t('page_titles.entities'), entity_instances_path
+        %li{class:  params[:controller]=~/\Arelationships/ ? 'active' : ''}= link_to t('page_titles.relationships'), relationships_path
+        %li{class:  params[:controller]=~/\Asuggest_relationships/ ? 'active' : ''}= link_to t('page_titles.suggest'), suggest_relationships_path
+        - if can? :manage, :all
+          = render 'layouts/admin_links'
+      %ul.nav.navbar-nav.navbar-right
+        %li= link_to "Eng", locale: "en"
+        %li= link_to "Ukr", locale: "uk"
+        %li{class:  (params[:controller]=~/\Ausers/) && (params[:action]=~/\Ashow/) ? 'active' : ''}= link_to current_user.initials, user_path(current_user)
+        %li= link_to t('page_titles.logout'), destroy_user_session_path, :method => :delete
+  / /.nav-collapse

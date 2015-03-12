@@ -1,0 +1,17 @@
+.page-header
+  %h1= t('relationships.model_name')
+%dl.dl-horizontal
+  %dt= t('relationships.attributes.name')
+  %dd= @relationship.name
+  %dt= t('relationships.attributes.entity_instance_to')
+  %dd= @relationship.entity_to.name
+  %dt= t('relationships.attributes.entity_instance_from')
+  %dd= @relationship.entity_from.name
+  %dt= t('relationships.attributes.type')
+  %dd= @relationship.relationship_type.name
+.page-header
+  = link_to relationship_relationship_bits_path(@relationship), :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    = t('relationship_bits.models_name')
+  %h1= t('relationship_bits.models_name')
+= render @relationship.relationship_bits
