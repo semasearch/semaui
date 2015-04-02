@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: relationships
+#
+#  id                   :integer          not null, primary key
+#  name                 :string(255)
+#  entity_instance_to   :integer
+#  entity_instance_from :integer
+#  created_at           :datetime
+#  updated_at           :datetime
+#  relationship_type_id :integer
+#  rel_node_id          :string(255)
+#  user_id              :integer
+#
+
 class Relationship < ActiveRecord::Base
 
   require 'neo4j-core'
