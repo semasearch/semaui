@@ -1,3 +1,6 @@
-tmp/
+# RubyMine project files
 .idea
-tmp
+.directory
+
+/log/*
+/tmp/*
